@@ -1,47 +1,34 @@
-import React, { PropsWithChildren, useEffect, useState } from "react";
-import apiClient from "../services/api-client";
-import { Text } from "@chakra-ui/react";
+import { PropsWithChildren } from "react";
+
+import { SimpleGrid, Text } from "@chakra-ui/react";
+import useGames from "../hooks/useGames";
+import GameCard from "./GameCard";
 
 interface GameGridProps {}
 
-interface Game {
-  id: number;
-  slug: string;
-  name: string;
-  released: string;
-  tba: boolean;
-}
-interface GameObj {
-  count: number;
-  description: string;
-  results: Game[];
-  length: number;
-
-  seo_description: string;
-  seo_h1: string;
-  seo_keywords: string;
-  seo_title: string;
-}
 const GameGrid = ({}: PropsWithChildren<GameGridProps>) => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
+  const { games, error } = useGames();
 
-  useEffect(() => {
-    apiClient
-      .get<GameObj>("/games")
-      .then(({ data }) => setGames(data.results))
-      .catch((e) => setError(e.message));
-  });
   return (
-    <div>
-      <h2>Games</h2>
+    <>
+      {/* <h2>Games</h2> */}
       {error && <Text color={"red.200"}>{error}</Text>}
-      <ul>
+      <SimpleGrid
+        minChildWidth={"300px"}
+        padding={"10px"}
+        column={{
+          sm: 1,
+          md: 2,
+          lg: 3,
+          xl: 5,
+        }}
+        spacing={"10px"}
+      >
         {games.map((game) => (
-          <li key={game.id}>{game.name}</li>
+          <GameCard game={game} key={game.id} />
         ))}
-      </ul>
-    </div>
+      </SimpleGrid>
+    </>
   );
 };
 
