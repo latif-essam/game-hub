@@ -16,6 +16,7 @@ export interface Game {
   tba: boolean;
   background_image: string;
   parent_platforms: { platform: Platform }[];
+  metacritic: number;
 }
 interface GameObj {
   count: number;
