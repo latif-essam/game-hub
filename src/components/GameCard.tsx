@@ -10,7 +10,7 @@ interface GameCardProps {
 }
 const GameCard = ({ game }: PropsWithChildren<GameCardProps>) => {
   return (
-    <Card marginBlock={4} borderRadius={10} width={"300px"} overflow={"hidden"}>
+    <Card minHeight={"100%"}>
       <Image src={getCroppedImgUrl(game.background_image)} />
       <CardBody>
         <Heading fontSize={"2xl"}>{game.name}</Heading>

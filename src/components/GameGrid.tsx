@@ -4,6 +4,7 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
+import GameCardContainer from "./GameCardContainer";
 
 interface GameGridProps {}
 
@@ -12,7 +13,6 @@ const GameGrid = ({}: PropsWithChildren<GameGridProps>) => {
 
   return (
     <>
-      {/* <h2>Games</h2> */}
       {error && <Text color={"red.200"}>{error}</Text>}
       <SimpleGrid
         minChildWidth={"300px"}
@@ -27,10 +27,14 @@ const GameGrid = ({}: PropsWithChildren<GameGridProps>) => {
       >
         {isLoading &&
           [1, 2, 3, 4, 5, 6].map((skeleton) => (
-            <GameCardSkeleton key={skeleton} />
+            <GameCardContainer key={skeleton}>
+              <GameCardSkeleton />
+            </GameCardContainer>
           ))}
         {games.map((game) => (
-          <GameCard game={game} key={game.id} />
+          <GameCardContainer key={game.id}>
+            <GameCard game={game} />
+          </GameCardContainer>
         ))}
       </SimpleGrid>
     </>
