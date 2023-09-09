@@ -9,14 +9,14 @@ import GameCardContainer from "./GameCardContainer";
 interface GameGridProps {}
 
 const GameGrid = ({}: PropsWithChildren<GameGridProps>) => {
-  const { games, error, isLoading } = useGames();
+  const { data: games, error, isLoading } = useGames();
 
   return (
     <>
       {error && <Text color={"red.200"}>{error}</Text>}
       <SimpleGrid
         minChildWidth={"300px"}
-        padding={"10px"}
+        padding={"5px"}
         column={{
           sm: 1,
           md: 2,

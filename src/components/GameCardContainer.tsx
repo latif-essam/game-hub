@@ -11,6 +11,7 @@ const GameCardContainer = ({
       minHeight={"350px"}
       width={"300px"}
       borderRadius={10}
+      cursor={"pointer"}
     >
       {children}
     </Box>
