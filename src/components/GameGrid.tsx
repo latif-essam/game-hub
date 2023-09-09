@@ -23,7 +23,7 @@ const GameGrid = ({}: PropsWithChildren<GameGridProps>) => {
           lg: 3,
           xl: 5,
         }}
-        spacing={"10px"}
+        spacing={3}
       >
         {isLoading &&
           [1, 2, 3, 4, 5, 6].map((skeleton) => (

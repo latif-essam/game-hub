@@ -9,7 +9,6 @@ const GameCardContainer = ({
     <Box
       overflow={"hidden"}
       minHeight={"350px"}
-      width={"300px"}
       borderRadius={10}
       cursor={"pointer"}
     >
