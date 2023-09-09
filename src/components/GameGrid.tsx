@@ -6,14 +6,24 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import { Genre } from "../hooks/useGenres";
+import { Platform } from "../hooks/usePlatforms";
 
 interface GameGridProps {
   selectedGener: Genre | null;
+  selectedPlatform: Platform | null;
 }
 
-const GameGrid = ({ selectedGener }: PropsWithChildren<GameGridProps>) => {
-  const { data: games, error, isLoading } = useGames(selectedGener);
-
+const GameGrid = ({
+  selectedGener,
+  selectedPlatform,
+}: PropsWithChildren<GameGridProps>) => {
+  const {
+    data: games,
+    error,
+    isLoading,
+  } = useGames(selectedGener, selectedPlatform);
+  if (games.length === 0)
+    return <Text>No games to show?? Try different Filters </Text>;
   return (
     <>
       {error && <Text color={"red.200"}>{error}</Text>}
