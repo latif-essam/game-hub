@@ -5,11 +5,14 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
+import { Genre } from "../hooks/useGenres";
 
-interface GameGridProps {}
+interface GameGridProps {
+  selectedGener: Genre | null;
+}
 
-const GameGrid = ({}: PropsWithChildren<GameGridProps>) => {
-  const { data: games, error, isLoading } = useGames();
+const GameGrid = ({ selectedGener }: PropsWithChildren<GameGridProps>) => {
+  const { data: games, error, isLoading } = useGames(selectedGener);
 
   return (
     <>
