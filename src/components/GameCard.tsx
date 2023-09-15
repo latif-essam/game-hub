@@ -11,11 +11,7 @@ interface GameCardProps {
 const GameCard = ({ game }: PropsWithChildren<GameCardProps>) => {
   return (
     <Card minHeight={"100%"}>
-      <Image
-        src={
-          game.background_image ? getCroppedImgUrl(game.background_image) : ""
-        }
-      />
+      <Image src={getCroppedImgUrl(game.background_image)} />
       <CardBody>
         <Heading fontSize={"2xl"}>{game.name}</Heading>
 
