@@ -30,10 +30,7 @@ function App() {
       }}
     >
       <GridItem area={"nav"}>
-        <NavBar
-          search={gameQuery.search}
-          onSearch={(search) => setGameQuery({ ...gameQuery, search })}
-        />
+        <NavBar onSearch={(search) => setGameQuery({ ...gameQuery, search })} />
       </GridItem>
       <Show above="lg">
         <GridItem area={"aside"} paddingX={5}>
