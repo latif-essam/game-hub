@@ -13,12 +13,11 @@ const GameCard = ({ game }: PropsWithChildren<GameCardProps>) => {
     <Card minHeight={"100%"}>
       <Image src={getCroppedImgUrl(game.background_image)} />
       <CardBody>
-        <Heading fontSize={"2xl"}>{game.name}</Heading>
-
-        <HStack justifyContent={"space-between"}>
+        <HStack marginBottom={4} justifyContent={"space-between"}>
           <PlatformIconList platforms={game.parent_platforms} />
           <CriticScore score={game.metacritic} />
         </HStack>
+        <Heading fontSize={"2xl"}>{game.name}</Heading>
       </CardBody>
     </Card>
   );
